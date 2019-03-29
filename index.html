@@ -19,8 +19,8 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
   <!--jQuery to make easier http calls-->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
   <!--Import Handlebars-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
@@ -53,25 +53,74 @@
 
     <div class="row">
       <div class="col s12 m6">
-        <h4>What to do?</h4>
-        <p>Du keder dig. Men du har ikke overvejet at du kan bruge det fantastiske activity api til at programmere en
-          app, som andre i samme situation kan bruge. Til dette lille projekt skal vi bruge:
-          <ul>
-            <li><a href="https://www.boredapi.com/">The bored API</a></li>
-            <li><a href="https://handlebarsjs.com/">Handlebars javascript</a></li>
-            <li><a href="https://materializecss.com/">Materialize css</a></li>
-            <li><a href="https://jquery.com/">jQuery</a></li>
-          </ul>
-        </p>
+        <nav>
+          <div class="nav-wrapper">
+            <ul id="nav-mobile" class="left">
+              <li id="menu-page-one"><a href="#">Page 1</a></li>
+              <li id="menu-page-two"><a href="#">Page 2</a></li>
+              <li id="menu-page-three"><a href="#">Page 3</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </div>
 
-    <div id="random-activity">
+    <div id="page-one">
+      <div class="row">
+        <div class="col s12 m6">
+          <h4>What to do?</h4>
+          <p>Refresh to get a random suggestion on what to do. Made with the fabolous:
+            <ul>
+              <li><a href="https://www.boredapi.com/">The bored API</a></li>
+            </ul>
+          </p>
+          <p>Now find another API of your liking, and start coding a complete web-app to suit your needs</p>
+        </div>
+      </div>
+      <div id="random-activity">
+      </div>
     </div>
 
-    <!-- placeholder -->
-    <div id="social-activity">
+    <div id="page-two">
+      <div class="row">
+        <div class="col s12 m6">
+          <h4>Page 2</h4>
+          <p>Uses a simple function to add a littele more functionality to the API interaction</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 m3">
+          <a class="waves-effect waves-light btn-large" onclick="getGroupActivity(1)"><i class="material-icons right">face</i>Alone</a>
+        </div>
+        <div class="col s6 m3">
+          <a class="waves-effect waves-light btn-large" onclick="getGroupActivity(2)"><i class="material-icons right">face</i><i
+              class="material-icons right">face</i>Together</a>
+        </div>
+      </div>
+      <div id="activity-by-number">
+      </div>
     </div>
+
+    <div id="page-three">
+      <div class="row">
+        <div class="col s12 m6">
+          <h4>Choose a category</h4>
+          <p>Here we use a dropdown structure from Materialize to get different content from the API</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="collection">
+            <a href="#!" class="collection-item" onclick="shift(this)">social</a>
+            <a href="#!" class="collection-item" onclick="shift(this)">recreational</a>
+            <a href="#!" class="collection-item" onclick="shift(this)">diy</a>
+          </div>
+        </div>
+      </div>
+      <div id="activity-by-cat">
+      </div>
+    </div>
+
 
   </div>
 
@@ -96,6 +145,7 @@
       </div>
     </div>
 </script>
+
   <script id="social-activity-template" type="text/x-handlebars-template">
     <div class="row">
     <div class="col s12 m6">
@@ -147,12 +197,12 @@
       socialActivityPlaceholder.innerHTML = socialActivityTemplate(data);
     });
 
-// A $( document ).ready() block.
-$( document ).ready(function() {
-  $('#fadeOutRandom').click(function () {
-      $('#random-activity').fadeOut(3000);
+    // A $( document ).ready() block.
+    $(document).ready(function () {
+      $('#fadeOutRandom').click(function () {
+        $('#random-activity').fadeOut(3000);
+      });
     });
-});
   </script>
 
 </body>
