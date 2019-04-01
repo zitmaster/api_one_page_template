@@ -67,18 +67,12 @@
     <div id="page-one">
       <div class="row">
         <div class="col s12 m6">
-          <h4>What to do?</h4>
-          <p>Refresh to get a random suggestion on what to do. Made with the fabolous:
-            <ul>
-              <li><a href="https://www.boredapi.com/">The bored API</a></li>
-            </ul>
-          </p>
-          <p>Now find another API of your liking, and start coding a complete web-app to suit your needs:</p>
-
+          <h4>Single page API app</h4>
+          <p>Find an API of your liking, and start coding a complete web-app to suit your needs:</p>
           <ul><li><a href="https://github.com/toddmotto/public-apis">Look for a public API with little or no authentication here</a></li></ul>
         </div>
       </div>
-      <div id="random-activity">
+      <div id="api-component-page-one">
       </div>
     </div>
 
@@ -86,22 +80,18 @@
       <div class="row">
         <div class="col s12 m6">
           <h4>Page 2</h4>
-          <p>Uses a simple function to add a littele more functionality to the API interaction</p>
+          <p>Uses a simple function to add a little more functionality to the API interaction</p>
         </div>
       </div>
       <div class="row">
         <div class="col s12 m3">
           <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
-          <a class="waves-effect waves-light btn-large" onclick="getGroupActivity(1)">
+          <a class="waves-effect waves-light btn-large" onclick="getSomeOtherApiData('random?auth=null')">
           <!--To use google icon font, add a <i> element inside a button link the following way -->
-          <i class="material-icons right">face</i>Alone</a>
-        </div>
-        <div class="col s12 m3">
-          <a class="waves-effect waves-light btn-large" onclick="getGroupActivity(2)">
-          <i class="material-icons right">face</i><i class="material-icons right">face</i>Together</a>
+          <i class="material-icons right">face</i>Public API Random</a>
         </div>
       </div>
-      <div id="activity-by-number">
+      <div id="api-component-page-two">
       </div>
     </div>
 
@@ -113,8 +103,8 @@
 
   <!-- Handlebar templates - these HTML snippets are only shown when we compile them with Handlebars
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!-- LAV TEMPLATES TIL DINE FORSKELLIGE ELEMENTER -->
-  <script id="random-activity-template" type="text/x-handlebars-template">
+  <!-- LAV TEMPLATES TIL DINE FORSKELLIGE API ELEMENTER -->
+  <script id="api-card-template" type="text/x-handlebars-template">
     <div class="row">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
@@ -130,70 +120,74 @@
     </div>
 </script>
 
-  <script id="activity-by-number-template" type="text/x-handlebars-template">
+  <!-- LAV TEMPLATES TIL DINE FORSKELLIGE API ELEMENTER -->
+  <script id="api-card-template-two" type="text/x-handlebars-template">
     <div class="row">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{type}}</span>
-              <p>{{activity}}</p>
+              <span class="card-title">{{API}}</span>
+              <p>
+                {{Description}}
+                <ul>
+                  <li>Auth: {{Auth}}</li>
+                  <li>Category: {{Category}}</li>
+                  <li>HTTPS: {{HTTPS}}</li>
+                </ul>
+              </p>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
+              <a href="#">{{Link}}</a>
             </div>
           </div>
       </div>
     </div>
-  </script>
-
+</script>
 
   <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
-    // Setup handlebars for Random activity card
-    var randomActivitySource = document.getElementById("random-activity-template").innerHTML;
-    var randomActivityTemplate = Handlebars.compile(randomActivitySource);
-    var randomActivityPlaceholder = document.getElementById('random-activity');
+    // Setup handlebars for first API card
+    var apiSource = $("#api-card-template").html();
+    var apiTemplate = Handlebars.compile(apiSource);
 
-    // Setup handlebars for Social activity card
-    var activityByNumberSource = document.getElementById("activity-by-number-template").innerHTML;
-    var activityByNumberTemplate = Handlebars.compile(activityByNumberSource);
-    var activityByNumberPlaceholder = document.getElementById('activity-by-number');
+    // Setup handlebars for second API card
+    var apiSourceTwo = $("#api-card-template-two").html();
+    var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
 
-    // Get content from API and handle interaction
-    function getRandomActivity() {
+    function getApiData(someparam) {
       $.ajax({
-        url: "https://www.boredapi.com/api/activity",
+        url: "https://www.boredapi.com/api/activity?participants=" + someparam,
       }).done(function (data) {
-        randomActivityPlaceholder.innerHTML = randomActivityTemplate(data);
+        console.log(data);
+        $('#api-component-page-one').html(apiTemplate(data));
       });
     }
-    function getGroupActivity(n) {
+
+    function getSomeOtherApiData(querystring) {
       $.ajax({
-        url: "https://www.boredapi.com/api/activity?participants=" + n,
+        url: "https://api.publicapis.org/" + querystring,
       }).done(function (data) {
-        activityByNumberPlaceholder.innerHTML = activityByNumberTemplate(data);
+        console.log(data);
+        $('#api-component-page-two').html(apiTemplateTwo(data.entries[0]));
       });
     }
 
     //Handle menu - first show page one no matter what
-    getRandomActivity()
+    getApiData(1)
     $('#page-two').hide();
-    $('#page-three').hide();
 
     //When someone clicks the page one navigation link
     //This is the second way to make something happen, when you click an HTML element
     $('#menu-page-one').click(function () {
-      getRandomActivity()
+      getApiData(1)
       $('#page-one').show();
       $('#page-two').hide();
-      $('#page-three').hide();
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
       $('#page-one').hide();
       $('#page-two').show();
-      $('#page-three').hide();
     });
     
   </script>
