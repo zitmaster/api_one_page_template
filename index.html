@@ -218,9 +218,9 @@
       });
     }
 
-    function getRandomData(someparam) {
+    function getRandomData() {
       $.ajax({
-        url: "https://uinames.com/api/",
+        url: "https://uinames.com/api/?ext",
       }).done(function (data) {
         console.log(data);
         $('#api-component-page-tree').html(apiTemplateTree(data));
