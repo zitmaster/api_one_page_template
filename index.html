@@ -3,6 +3,9 @@
 
 <head>
 
+  <!-- Hvis jeg har brug for et nyt api https://api.publicapis.org/ 
+  Jeg skal også huske https://icanhazdadjoke.com/ 
+  HTTP://WWW.CITYSDK.EU/CITYSDK-TOOLKIT/ -->
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
@@ -58,6 +61,7 @@
             <ul id="nav-mobile" class="left">
               <li id="menu-page-one"><a href="#">Page 1</a></li>
               <li id="menu-page-two"><a href="#">Page 2</a></li>
+              <li id="menu-page-tree"><a href="#">Page 3</a></li>
             </ul>
           </div>
         </nav>
@@ -112,6 +116,8 @@
       </div>
       <div id="api-component-page-two">
       </div>
+      <div id="api-component-page-tree">
+      </div>
     </div>
 
   </div>
@@ -128,11 +134,11 @@
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{type}}</span>
-              <p>{{activity}}</p>
+              <span class="card-title">A random joke</span> 
+              <p>{{text}}</p>
             </div>
             <div class="card-action">
-              <a href="#">This is a link</a>
+              <a href="https://icanhazdadjoke.com">This is a link</a>
             </div>
           </div>
       </div>
@@ -163,6 +169,22 @@
     </div>
 </script>
 
+<script id="api-card-template-tree" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">A random name</span> 
+            <p>{{name}}</p>
+          </div>
+          <div class="card-action">
+            <a href="https://uinames.com/">This is a link</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</script>
+
   <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
@@ -174,13 +196,16 @@
     var apiSourceTwo = $("#api-card-template-two").html();
     var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
 
+    var apiSourceTree = $("#api-card-template-tree").html();
+    var apiTemplateTree = Handlebars.compile(apiSourceTree);
+
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
     function getApiData(someparam) {
       $.ajax({
-        url: "https://www.boredapi.com/api/activity?participants=" + someparam,
+        url: "https://icanhazdadjoke.com/slack",
       }).done(function (data) {
         console.log(data);
-        $('#api-component-page-one').html(apiTemplate(data));
+        $('#api-component-page-one').html(apiTemplate(data.attachments[0]));
       });
     }
 
@@ -193,9 +218,19 @@
       });
     }
 
+    function getRandomData(someparam) {
+      $.ajax({
+        url: "https://uinames.com/api/",
+      }).done(function (data) {
+        console.log(data);
+        $('#api-component-page-tree').html(apiTemplateTree(data));
+      });
+    }
+
     //Handle menu - first show page one no matter what
     getApiData(1)
     $('#page-two').hide();
+    $('#page-tree').hide();
 
     //When someone clicks the page one navigation link
     //This is the second way to make something happen, when you click an HTML element
@@ -203,11 +238,18 @@
       getApiData(1)
       $('#page-one').show();
       $('#page-two').hide();
+      $('#page-tree').hide();
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
       $('#page-one').hide();
       $('#page-two').show();
+      $('#page-tree').hide();
+    });
+    $('#menu-page-tree').click(function () {
+      $('#page-one').hide();
+      $('#page-two').hide();
+      $('#page-tree').show();
     });
   </script>
 
