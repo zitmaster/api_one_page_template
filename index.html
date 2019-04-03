@@ -5,7 +5,8 @@
 
   <!-- Hvis jeg har brug for et nyt api https://api.publicapis.org/ 
   Jeg skal også huske https://icanhazdadjoke.com/ 
-  HTTP://WWW.CITYSDK.EU/CITYSDK-TOOLKIT/ -->
+  HTTP://WWW.CITYSDK.EU/CITYSDK-TOOLKIT/ 
+  https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html -->
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
@@ -62,6 +63,7 @@
               <li id="menu-page-one"><a href="#">Page 1</a></li>
               <li id="menu-page-two"><a href="#">Page 2</a></li>
               <li id="menu-page-tree"><a href="#">Page 3</a></li>
+              <li id="menu-page-five"><a href="#">Page 4</a></li>
             </ul>
           </div>
         </nav>
@@ -119,6 +121,8 @@
     </div>
     <div id="api-component-page-tree">
     </div>
+    <div id="api-component-page-five">
+    </div>
 
   </div>
 
@@ -175,8 +179,9 @@
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">A random name</span> 
-            <p>{{name}}
+            <p>
               <ul>
+                <li>{{name}}</li>
                 <li>{{surname}}</li>
                 <li>{{gender}}</li>
                 <li>{{age}}</li>
@@ -187,6 +192,32 @@
           </div>
           <div class="card-action">
             <a href="https://uinames.com/">This is a link</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</script>
+
+<script id="api-card-template-five" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Here is your ip and some more</span> 
+            <p>
+              <ul>
+                <li>Your ip: {{ip}}</li>
+                <li>The city your in: {{city}}</li>
+                <li>The countrys name: {{country_name}}</li>
+                <li>The region: {{region}}</li>
+                <li>The calling code of the country: {{country_calling_code}}</li>
+                <li>Your latitude: {{latitude}}</li>
+                <li>Your longitude: {{longitude}}</li>
+              </ul>
+            </p>
+          </div>
+          <div class="card-action">
+            <a href="https://icanhazdadjoke.com">This is a link</a>
           </div>
         </div>
     </div>
@@ -206,6 +237,9 @@
 
     var apiSourceTree = $("#api-card-template-tree").html();
     var apiTemplateTree = Handlebars.compile(apiSourceTree);
+
+    var apiSourceFive = $("#api-card-template-five").html();
+    var apiTemplateFive = Handlebars.compile(apiSourceFive);
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
     function getApiData(someparam) {
@@ -234,11 +268,20 @@
         $('#api-component-page-tree').html(apiTemplateTree(data));
       });
     }
+    function getARandomData() {
+      $.ajax({
+        url: "https://ipapi.co/json",
+      }).done(function (data) {
+        console.log(data);
+        $('#api-component-page-five').html(apiTemplateFive(data));
+      });
+    }
 
     //Handle menu - first show page one no matter what
     getApiData(1)
     $('#page-two').hide();
     $('#page-tree').hide();
+    $('#page-five').hide();
 
     //When someone clicks the page one navigation link
     //This is the second way to make something happen, when you click an HTML element
@@ -247,18 +290,28 @@
       $('#page-one').show();
       $('#page-two').hide();
       $('#page-tree').hide();
+      $('#page-five').hide();
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
       $('#page-one').hide();
       $('#page-two').show();
       $('#page-tree').hide();
+      $('#page-five').hide();
     });
     $('#menu-page-tree').click(function () {
       getRandomData();
       $('#page-one').hide();
       $('#page-two').hide();
       $('#page-tree').show();
+      $('#page-five').hide();
+    });
+    $('#menu-page-five').click(function () {
+      getARandomData();
+      $('#page-one').hide();
+      $('#page-two').hide();
+      $('#page-tree').hide();
+      $('#page-five').show();
     });
   </script>
 
