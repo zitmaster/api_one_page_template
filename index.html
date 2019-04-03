@@ -10,7 +10,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>This is my page name :)</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -119,8 +119,26 @@
       <div id="api-component-page-two">
       </div>
     </div>
+    <div id="page-tree">
+        <div class="row">
+          <div class="col s12 m6">
+            <h4>Single page API app</h4>
+            <p>Her kan du få et random navn, hvis du har brug for at flydte til et andet land.</p>
+            <hr />
+            <h5>Example card from the Bored api</h5>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m3">
+              <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
+              <a class="waves-effect waves-light btn-large" onclick="getRandomData('random?auth=null')">
+                <!--To use google icon font, add a <i> element inside a button link the following way -->
+                <i class="material-icons right">cloud</i>A new name</a>
+            </div>
+          </div>
     <div id="api-component-page-tree">
     </div>
+  </div>
     <div id="api-component-page-five">
     </div>
 
@@ -181,17 +199,18 @@
             <span class="card-title">A random name</span> 
             <p>
               <ul>
-                <li>{{name}}</li>
-                <li>{{surname}}</li>
-                <li>{{gender}}</li>
-                <li>{{age}}</li>
-                <li>{{region}}</li>
+                <li>A name: {{name}}</li>
+                <li>A last name: {{surname}}</li>
+                <li>Your new gender: {{gender}}</li>
+                <li>Your age: {{age}}</li>
+                <li>The region you live in: {{region}}</li>
+                <li>Your email: {{email}}</li>
               </ul>
             </p>
             </p>
           </div>
           <div class="card-action">
-            <a href="https://uinames.com/">This is a link</a>
+            <a href="https://uinames.com/">This is a link to a website that can do the same</a>
           </div>
         </div>
     </div>
@@ -217,7 +236,7 @@
             </p>
           </div>
           <div class="card-action">
-            <a href="https://icanhazdadjoke.com">This is a link</a>
+            
           </div>
         </div>
     </div>
