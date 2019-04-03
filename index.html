@@ -64,6 +64,7 @@
               <li id="menu-page-two"><a href="#">Page 2</a></li>
               <li id="menu-page-tree"><a href="#">Page 3</a></li>
               <li id="menu-page-five"><a href="#">Page 4</a></li>
+              <li id="menu-page-four"><a href="#">Page 5</a></li>
             </ul>
           </div>
         </nav>
@@ -141,6 +142,9 @@
   </div>
     <div id="api-component-page-five">
     </div>
+  </div>
+  <div id="api-component-page-four">
+  </div>
 
   </div>
 
@@ -196,7 +200,7 @@
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">A random name</span> 
+            <span class="card-title">Here is your new identity</span> 
             <p>
               <ul>
                 <li>A name: {{name}}</li>
@@ -243,6 +247,22 @@
   </div>
 </script>
 
+<script id="api-card-template-four" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Just some cards</span> 
+            <p>{{cards}}</p>
+          </div>
+          <div class="card-action">
+            <a href="https://icanhazdadjoke.com">This is a link</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</script>
+
   <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
@@ -259,6 +279,10 @@
 
     var apiSourceFive = $("#api-card-template-five").html();
     var apiTemplateFive = Handlebars.compile(apiSourceFive);
+
+    var apiSourceFour = $("#api-card-template-four").html();
+    var apiTemplateFour = Handlebars.compile(apiSourceFour);
+
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
     function getApiData(someparam) {
@@ -295,12 +319,21 @@
         $('#api-component-page-five').html(apiTemplateFive(data));
       });
     }
+    function ged() {
+      $.ajax({
+        url: "https://deckofcardsapi.com/api/deck/new/draw/?count=2",
+      }).done(function (data) {
+        console.log(data);
+        $('#api-component-page-four').html(apiTemplateFour(data));
+      });
+    }
 
     //Handle menu - first show page one no matter what
     getApiData(1)
     $('#page-two').hide();
     $('#page-tree').hide();
     $('#page-five').hide();
+    $('#page-four').hide();
 
     //When someone clicks the page one navigation link
     //This is the second way to make something happen, when you click an HTML element
@@ -310,6 +343,7 @@
       $('#page-two').hide();
       $('#page-tree').hide();
       $('#page-five').hide();
+      $('#page-four').hide();
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
@@ -317,6 +351,7 @@
       $('#page-two').show();
       $('#page-tree').hide();
       $('#page-five').hide();
+      $('#page-four').hide();
     });
     $('#menu-page-tree').click(function () {
       getRandomData();
@@ -324,6 +359,7 @@
       $('#page-two').hide();
       $('#page-tree').show();
       $('#page-five').hide();
+      $('#page-four').hide();
     });
     $('#menu-page-five').click(function () {
       getARandomData();
@@ -331,6 +367,15 @@
       $('#page-two').hide();
       $('#page-tree').hide();
       $('#page-five').show();
+      $('#page-four').hide();
+    });
+    $('#menu-page-five').click(function () {
+      ged();
+      $('#page-one').hide();
+      $('#page-two').hide();
+      $('#page-tree').hide();
+      $('#page-five').hide();
+      $('#page-four').show();
     });
   </script>
 
