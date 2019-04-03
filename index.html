@@ -146,7 +146,6 @@
   </div>
   <div id="api-component-page-four">
   </div>
-
   </div>
 
 
@@ -253,11 +252,14 @@
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
-            <span class="card-title">Just some cards</span> 
-            <p>{{cards}}</p>
+            <span class="card-title">Here is your card</span> 
+            <p>
+              <ul>
+                <li>{{value}} of {{suit}}</li>
+              </ul>
+            </p>
           </div>
           <div class="card-action">
-            <a href="https://icanhazdadjoke.com">This is a link</a>
           </div>
         </div>
     </div>
@@ -325,7 +327,7 @@
         url: "https://deckofcardsapi.com/api/deck/new/draw/?count=2",
       }).done(function (data) {
         console.log(data);
-        $('#api-component-page-four').html(apiTemplateFour(data));
+        $('#api-component-page-four').html(apiTemplateFour(data.cards[0]));
       });
     }
 
@@ -370,7 +372,7 @@
       $('#page-five').show();
       $('#page-four').hide();
     });
-    $('#menu-page-five').click(function () {
+    $('#menu-page-four').click(function () {
       ged();
       $('#page-one').hide();
       $('#page-two').hide();
