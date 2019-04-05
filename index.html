@@ -81,7 +81,7 @@
               <li id="menu-page-tree"><a href="#">Page 3</a></li>
               <li id="menu-page-five"><a href="#">Page 4</a></li>
               <li id="menu-page-four"><a href="#">Page 5</a></li>
-              <li id="menu-page-six"><a href="#">Page 6</a></li>
+             <!--<li id="menu-page-six"><a href="#">Page 6</a></li>--> 
             </ul>
           </div>
         </nav>
@@ -388,7 +388,7 @@
 
     function gås(someparam) {
       $.ajax({
-        url: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v1/?format=json&appid=440/",
+        url: "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=440&count=3&maxlength=300&format=json",
       }).done(function (data) {
         console.log(data);
         $('#api-component-page-six').html(apiTemplateSix(data));
