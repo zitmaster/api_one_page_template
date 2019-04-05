@@ -73,18 +73,18 @@
   <div class="container" style="margin-top: 3%">
 
     <div class="row">
-        <nav>
-          <div class="nav-wrapper">
-            <ul id="nav-mobile" class="left">
-              <li id="menu-page-one"><a href="#">Page 1</a></li>
-              <li id="menu-page-two"><a href="#">Page 2</a></li>
-              <li id="menu-page-tree"><a href="#">Page 3</a></li>
-              <li id="menu-page-five"><a href="#">Page 4</a></li>
-              <li id="menu-page-four"><a href="#">Page 5</a></li>
-             <!--<li id="menu-page-six"><a href="#">Page 6</a></li>--> 
-            </ul>
-          </div>
-        </nav>
+      <nav>
+        <div class="nav-wrapper">
+          <ul id="nav-mobile" class="left">
+            <li id="menu-page-one"><a href="#">Page 1</a></li>
+            <li id="menu-page-two"><a href="#">Page 2</a></li>
+            <li id="menu-page-tree"><a href="#">Page 3</a></li>
+            <li id="menu-page-five"><a href="#">Page 4</a></li>
+            <li id="menu-page-four"><a href="#">Page 5</a></li>
+            <!--<li id="menu-page-six"><a href="#">Page 6</a></li>-->
+          </ul>
+        </div>
+      </nav>
     </div>
 
     <div id="page-one">
@@ -106,11 +106,11 @@
         </div>
       </div>
       <div class="row">
-          <div class="col s12 m3">
-            <a class="waves-effect waves-light btn-large" onclick="getApiData('random?auth=null')">
-              <i class="material-icons right"></i>A new joke</a>
-          </div>
+        <div class="col s12 m3">
+          <a class="waves-effect waves-light btn-large" onclick="getApiData('random?auth=null')">
+            <i class="material-icons right"></i>A new joke</a>
         </div>
+      </div>
       <div id="api-component-page-one">
       </div>
     </div>
@@ -121,10 +121,12 @@
           <h4>Page 2</h4>
           <p>Click the button to get suggestions for public API's with no authentication.</p>
           <p>Follow the link to see the API documentation. Remark: every API has one or more "endpoints" - this is
-            basically a root url to access the API. Then most API's have additional "query values", which is used to specify further parameters. 
+            basically a root url to access the API. Then most API's have additional "query values", which is used to
+            specify further parameters.
             <p>For example:
-              <ul><li>Root url: "https://www.boredapi.com/api/activity"</li>
-              <li>Querystring: "?participants=4"</li>
+              <ul>
+                <li>Root url: "https://www.boredapi.com/api/activity"</li>
+                <li>Querystring: "?participants=4"</li>
               </ul>
               By connecting these two strings in an AJAX call, you will receive a JSON formatted acitivity for 4 people
             </p>
@@ -143,54 +145,54 @@
       </div>
     </div>
     <div id="page-tree">
-        <div class="row">
-          <div class="col s12 m6">
-            <h4>Single page API app</h4>
-            <p>Her kan du få et random navn, hvis du har brug for at flydte til et andet land.</p>
-            <hr />
-            <h5>Her nede er din ny identitet</h5>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col s12 m3">
-              <a class="waves-effect waves-light btn-large" onclick="getRandomData('random?auth=null')">
-                <i class="material-icons right">cloud</i>A new name</a>
-            </div>
-          </div>
-    <div id="api-component-page-tree">
-    </div>
-  </div>
-
-  <div id="page-five">
-    <div id="api-component-page-five">
-    </div> 
-  </div>
-
-  <div id="page-four">
       <div class="row">
-          <div class="col s12 m3">
-            <a class="waves-effect waves-light btn-large" onclick="ged('random?auth=null')">
-              <i class="material-icons right"></i>A new card</a>
-          </div>
+        <div class="col s12 m6">
+          <h4>Single page API app</h4>
+          <p>Her kan du få et random navn, hvis du har brug for at flydte til et andet land.</p>
+          <hr />
+          <h5>Her nede er din ny identitet</h5>
         </div>
-  <div id="api-component-page-four">
-  </div>
-</div>
+      </div>
+      <div class="row">
+        <div class="col s12 m3">
+          <a class="waves-effect waves-light btn-large" onclick="getRandomData('random?auth=null')">
+            <i class="material-icons right">cloud</i>A new name</a>
+        </div>
+      </div>
+      <div id="api-component-page-tree">
+      </div>
+    </div>
 
-<div id="page-six">
-  <div id="api-component-page-six">
-  </div>
-</div>
+    <div id="page-five">
+      <div id="api-component-page-five">
+      </div>
+    </div>
+
+    <div id="page-four">
+      <div class="row">
+        <div class="col s12 m3">
+          <a class="waves-effect waves-light btn-large" onclick="ged('random?auth=null')">
+            <i class="material-icons right"></i>A new card</a>
+        </div>
+      </div>
+      <div id="api-component-page-four">
+      </div>
+    </div>
+
+    <div id="page-six">
+      <div id="api-component-page-six">
+      </div>
+    </div>
 
 
-  <!-- End Document body
+    <!-- End Document body
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  <!-- Handlebar templates - these HTML snippets are only shown when we compile them with Handlebars
+    <!-- Handlebar templates - these HTML snippets are only shown when we compile them with Handlebars
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <!-- MATERIALIZE CARD TEMPLATE TO BORED API ACTIVITY -->
-  <script id="api-card-template" type="text/x-handlebars-template">
-    <div class="row">
+    <!-- MATERIALIZE CARD TEMPLATE TO BORED API ACTIVITY -->
+    <script id="api-card-template" type="text/x-handlebars-template">
+      <div class="row">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
@@ -205,9 +207,9 @@
     </div>
 </script>
 
-  <!-- TEMPLATE TO PUBLIC API'S -->
-  <script id="api-card-template-two" type="text/x-handlebars-template">
-    <div class="row">
+    <!-- TEMPLATE TO PUBLIC API'S -->
+    <script id="api-card-template-two" type="text/x-handlebars-template">
+      <div class="row">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
@@ -229,8 +231,8 @@
     </div>
 </script>
 
-<script id="api-card-template-tree" type="text/x-handlebars-template">
-  <div class="row">
+    <script id="api-card-template-tree" type="text/x-handlebars-template">
+      <div class="row">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
@@ -255,8 +257,8 @@
   </div>
 </script>
 
-<script id="api-card-template-five" type="text/x-handlebars-template">
-  <div class="row">
+    <script id="api-card-template-five" type="text/x-handlebars-template">
+      <div class="row">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
@@ -281,8 +283,8 @@
   </div>
 </script>
 
-<script id="api-card-template-four" type="text/x-handlebars-template">
-  <div class="row">
+    <script id="api-card-template-four" type="text/x-handlebars-template">
+      <div class="row">
     <div class="col s12 m7">
       <div class="card">
         <div class="card-image">
@@ -302,8 +304,8 @@
   </div>
 </script>
 
-<script id="api-card-template-six" type="text/x-handlebars-template">
-  <div class="row">
+    <script id="api-card-template-six" type="text/x-handlebars-template">
+      <div class="row">
       <div class="col s12 m6">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
@@ -318,151 +320,153 @@
   </div>
 </script>
 
-  <!-- Page functionality - Javascripts
+    <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script>
-    // Setup handlebars for first API card
-    var apiSource = $("#api-card-template").html();
-    var apiTemplate = Handlebars.compile(apiSource);
+    <script>
+      // Setup handlebars for first API card
+      var apiSource = $("#api-card-template").html();
+      var apiTemplate = Handlebars.compile(apiSource);
 
-    // Setup handlebars for second API card
-    var apiSourceTwo = $("#api-card-template-two").html();
-    var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
+      // Setup handlebars for second API card
+      var apiSourceTwo = $("#api-card-template-two").html();
+      var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
 
-    var apiSourceTree = $("#api-card-template-tree").html();
-    var apiTemplateTree = Handlebars.compile(apiSourceTree);
+      var apiSourceTree = $("#api-card-template-tree").html();
+      var apiTemplateTree = Handlebars.compile(apiSourceTree);
 
-    var apiSourceFive = $("#api-card-template-five").html();
-    var apiTemplateFive = Handlebars.compile(apiSourceFive);
+      var apiSourceFive = $("#api-card-template-five").html();
+      var apiTemplateFive = Handlebars.compile(apiSourceFive);
 
-    var apiSourceFour = $("#api-card-template-four").html();
-    var apiTemplateFour = Handlebars.compile(apiSourceFour);
+      var apiSourceFour = $("#api-card-template-four").html();
+      var apiTemplateFour = Handlebars.compile(apiSourceFour);
 
-    var apiSourceSix = $("#api-card-template-six").html();
-    var apiTemplateSix = Handlebars.compile(apiSourceSix);
+      var apiSourceSix = $("#api-card-template-six").html();
+      var apiTemplateSix = Handlebars.compile(apiSourceSix);
 
 
-    //Functions to actually get JSON data from external API's. When .done is called, you receive the data
-    function getApiData(someparam) {
-      $.ajax({
-        url: "https://icanhazdadjoke.com/slack",
-      }).done(function (data) {
-        console.log(data);
-        $('#api-component-page-one').html(apiTemplate(data.attachments[0]));
-      });
-    }
+      //Functions to actually get JSON data from external API's. When .done is called, you receive the data
+      function getApiData(someparam) {
+        $.ajax({
+          url: "https://icanhazdadjoke.com/slack",
+        }).done(function (data) {
+          console.log(data);
+          $('#api-component-page-one').html(apiTemplate(data.attachments[0]));
+        });
+      }
 
-    function getSomeOtherApiData(querystring) {
-      $.ajax({
-        url: "https://api.publicapis.org/" + querystring,
-      }).done(function (data) {
-        console.log(data);
-        $('#api-component-page-two').html(apiTemplateTwo(data.entries[0]));
-      });
-    }
+      function getSomeOtherApiData(querystring) {
+        $.ajax({
+          url: "https://api.publicapis.org/" + querystring,
+        }).done(function (data) {
+          console.log(data);
+          $('#api-component-page-two').html(apiTemplateTwo(data.entries[0]));
+        });
+      }
 
-    function getRandomData() {
-      $.ajax({
-        url: "https://uinames.com/api/?ext",
-      }).done(function (data) {
-        console.log(data);
-        $('#api-component-page-tree').html(apiTemplateTree(data));
-      });
-    }
-    function getARandomData() {
-      $.ajax({
-        url: "https://ipapi.co/json",
-      }).done(function (data) {
-        console.log(data);
-        $('#api-component-page-five').html(apiTemplateFive(data));
-      });
-    }
-    function ged() {
-      $.ajax({
-        url: "https://deckofcardsapi.com/api/deck/new/draw/?count=2",
-      }).done(function (data) {
-        console.log(data);
-        $('#api-component-page-four').html(apiTemplateFour(data.cards[0]));
-      });
-    }
+      function getRandomData() {
+        $.ajax({
+          url: "https://uinames.com/api/?ext",
+        }).done(function (data) {
+          console.log(data);
+          $('#api-component-page-tree').html(apiTemplateTree(data));
+        });
+      }
 
-    function gås(someparam) {
-      $.ajax({
-        url: "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=440&count=3&maxlength=300&format=json",
-      }).done(function (data) {
-        console.log(data);
-        $('#api-component-page-six').html(apiTemplateSix(data));
-      });
-    }
+      function getARandomData() {
+        $.ajax({
+          url: "https://ipapi.co/json",
+        }).done(function (data) {
+          console.log(data);
+          $('#api-component-page-five').html(apiTemplateFive(data));
+        });
+      }
 
-    //Handle menu - first show page one no matter what
-    getApiData(1)
-    $('#page-two').hide();
-    $('#page-tree').hide();
-    $('#page-five').hide();
-    $('#page-four').hide();
-    $('#page-six').hide();
+      function ged() {
+        $.ajax({
+          url: "https://deckofcardsapi.com/api/deck/new/draw/?count=2",
+        }).done(function (data) {
+          console.log(data);
+          $('#api-component-page-four').html(apiTemplateFour(data.cards[0]));
+        });
+      }
 
-    //When someone clicks the page one navigation link
-    //This is the second way to make something happen, when you click an HTML element
-    $('#menu-page-one').click(function () {
+      function gås(someparam) {
+        $.ajax({
+          url: "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=440&count=3&maxlength=300&format=json",
+        }).done(function (data) {
+          console.log(data);
+          $('#api-component-page-six').html(apiTemplateSix(data));
+        });
+      }
+
+      //Handle menu - first show page one no matter what
       getApiData(1)
-      $('#page-one').show();
       $('#page-two').hide();
       $('#page-tree').hide();
       $('#page-five').hide();
       $('#page-four').hide();
       $('#page-six').hide();
-    });
-    //When someone clicks the page two navigation link
-    $('#menu-page-two').click(function () {
-      $('#page-one').hide();
-      $('#page-two').show();
-      $('#page-tree').hide();
-      $('#page-five').hide();
-      $('#page-four').hide();
-      $('#page-six').hide();
-    });
-    $('#menu-page-tree').click(function () {
-      getRandomData();
-      $('#page-one').hide();
-      $('#page-two').hide();
-      $('#page-tree').show();
-      $('#page-five').hide();
-      $('#page-four').hide();
-      $('#page-six').hide();
-    });
-    $('#menu-page-five').click(function () {
-      getARandomData();
-      $('#page-one').hide();
-      $('#page-two').hide();
-      $('#page-tree').hide();
-      $('#page-five').show();
-      $('#page-four').hide();
-      $('#page-six').hide();
-    });
-    $('#menu-page-four').click(function () {
-      ged();
-      $('#page-one').hide();
-      $('#page-two').hide();
-      $('#page-tree').hide();
-      $('#page-five').hide();
-      $('#page-four').show();
-      $('#page-six').hide();
-    });
-    $('#menu-page-six').click(function () {
-      gås();
-      $('#page-one').hide();
-      $('#page-two').hide();
-      $('#page-tree').hide();
-      $('#page-five').hide();
-      $('#page-four').hide();
-      $('#page-six').show();
-    });
-  </script>
 
-  <!-- Compiled and minified JavaScript for Materialize functions-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      //When someone clicks the page one navigation link
+      //This is the second way to make something happen, when you click an HTML element
+      $('#menu-page-one').click(function () {
+        getApiData(1)
+        $('#page-one').show();
+        $('#page-two').hide();
+        $('#page-tree').hide();
+        $('#page-five').hide();
+        $('#page-four').hide();
+        $('#page-six').hide();
+      });
+      //When someone clicks the page two navigation link
+      $('#menu-page-two').click(function () {
+        $('#page-one').hide();
+        $('#page-two').show();
+        $('#page-tree').hide();
+        $('#page-five').hide();
+        $('#page-four').hide();
+        $('#page-six').hide();
+      });
+      $('#menu-page-tree').click(function () {
+        getRandomData();
+        $('#page-one').hide();
+        $('#page-two').hide();
+        $('#page-tree').show();
+        $('#page-five').hide();
+        $('#page-four').hide();
+        $('#page-six').hide();
+      });
+      $('#menu-page-five').click(function () {
+        getARandomData();
+        $('#page-one').hide();
+        $('#page-two').hide();
+        $('#page-tree').hide();
+        $('#page-five').show();
+        $('#page-four').hide();
+        $('#page-six').hide();
+      });
+      $('#menu-page-four').click(function () {
+        ged();
+        $('#page-one').hide();
+        $('#page-two').hide();
+        $('#page-tree').hide();
+        $('#page-five').hide();
+        $('#page-four').show();
+        $('#page-six').hide();
+      });
+      $('#menu-page-six').click(function () {
+        gås();
+        $('#page-one').hide();
+        $('#page-two').hide();
+        $('#page-tree').hide();
+        $('#page-five').hide();
+        $('#page-four').hide();
+        $('#page-six').show();
+      });
+    </script>
+
+    <!-- Compiled and minified JavaScript for Materialize functions-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>
