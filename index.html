@@ -19,6 +19,17 @@
   <title>This is my page name :)</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  <script language=JavaScript> 
+    var message="DU MÅ IKKE TAGE MIN KODE!"; 
+    function clickIE4(){ 
+      if (event.button==2){ alert(message); return false; } }
+    function clickNS4(e){ if (document.layers||document.getElementById&&!document.all)
+              { if (e.which==2||e.which==3){ alert(message); return false; } } } 
+    if (document.layers){ document.captureEvents(Event.MOUSEDOWN); document.onmousedown=clickNS4; } 
+    else if (document.all&&!document.getElementById){ document.onmousedown=clickIE4; } 
+    document.oncontextmenu=new Function("alert(message);return false") 
+  </script>
+
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -147,8 +158,9 @@
   </div>
     <div id="api-component-page-five">
     </div> 
-  
   <div id="api-component-page-four">
+  </div>
+  <div id="api-component-page-six">
   </div>
 
 
@@ -271,6 +283,22 @@
   </div>
 </script>
 
+<script id="api-card-template-six" type="text/x-handlebars-template">
+  <div class="row">
+      <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Steam news</span> 
+            <p>{{appnews}}</p>
+          </div>
+          <div class="card-action">
+            <a href="https://steamcommunity.com/dev">You can get your steam api here</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</script>
+
   <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script>
@@ -290,6 +318,9 @@
 
     var apiSourceFour = $("#api-card-template-four").html();
     var apiTemplateFour = Handlebars.compile(apiSourceFour);
+
+    var apiSourceSix = $("#api-card-template-six").html();
+    var apiTemplateSix = Handlebars.compile(apiSourceSix);
 
 
     //Functions to actually get JSON data from external API's. When .done is called, you receive the data
@@ -336,12 +367,22 @@
       });
     }
 
+    function gås(someparam) {
+      $.ajax({
+        url: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v1/?format=json&appid=440/",
+      }).done(function (data) {
+        console.log(data);
+        $('#api-component-page-six').html(apiTemplateSix(data));
+      });
+    }
+
     //Handle menu - first show page one no matter what
     getApiData(1)
     $('#page-two').hide();
     $('#page-tree').hide();
     $('#page-five').hide();
     $('#page-four').hide();
+    $('#page-six').hide();
 
     //When someone clicks the page one navigation link
     //This is the second way to make something happen, when you click an HTML element
@@ -352,6 +393,7 @@
       $('#page-tree').hide();
       $('#page-five').hide();
       $('#page-four').hide();
+      $('#page-six').hide();
     });
     //When someone clicks the page two navigation link
     $('#menu-page-two').click(function () {
@@ -360,6 +402,7 @@
       $('#page-tree').hide();
       $('#page-five').hide();
       $('#page-four').hide();
+      $('#page-six').hide();
     });
     $('#menu-page-tree').click(function () {
       getRandomData();
@@ -368,6 +411,7 @@
       $('#page-tree').show();
       $('#page-five').hide();
       $('#page-four').hide();
+      $('#page-six').hide();
     });
     $('#menu-page-five').click(function () {
       getARandomData();
@@ -376,6 +420,7 @@
       $('#page-tree').hide();
       $('#page-five').show();
       $('#page-four').hide();
+      $('#page-six').hide();
     });
     $('#menu-page-four').click(function () {
       ged();
@@ -384,6 +429,16 @@
       $('#page-tree').hide();
       $('#page-five').hide();
       $('#page-four').show();
+      $('#page-six').hide();
+    });
+    $('#menu-page-six').click(function () {
+      gås();
+      $('#page-one').hide();
+      $('#page-two').hide();
+      $('#page-tree').hide();
+      $('#page-five').hide();
+      $('#page-four').hide();
+      $('#page-six').show();
     });
   </script>
 
