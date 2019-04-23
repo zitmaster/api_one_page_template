@@ -14,6 +14,10 @@ https://deckofcardsapi.com/api/deck/new/draw/?count=2 - Dette API viser dig et s
 
 https://api.pokemontcg.io/v1/cards - Dette API indeholder 100 pokemon kort.
 
+Det bliver brugt jQuery, Javascript, HTML og Css i koden.
+
+Her er et link til en live version af min produkt: https://zitmaster.github.io/api_one_page_template/
+
 --------------------------------------- Det oven over et mit ----------------------------------------------
 
 This is a one-page template to make a neat web-app using an external API with jQuery. The app use the following frameworks and boilerplates:
