@@ -306,17 +306,20 @@
 
     <script id="api-card-template-six" type="text/x-handlebars-template">
       <div class="row">
-      <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
+        {{#each cards}}
+        <div class="col s12 m6">
+         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">A pokemon card</span> 
             <p>{{name}}</p>
-          </div>
-          <div class="card-action">
+            <img src="{{imageUrl}}">
+           </div>
+           <div class="card-action">
             <a href="https://steamcommunity.com/dev">You can get your steam api here</a>
           </div>
         </div>
     </div>
+    {{/each}}
   </div>
 </script>
 
@@ -391,12 +394,29 @@
       }
 
       function gås(someparam) {
-        $.ajax({
-          url: "https://api.pokemontcg.io/v1/cards",
-        }).done(function (data) {
-          console.log(data);
-          $('#api-component-page-six').html(apiTemplateSix(data.cards[0]));
+        /*         $.ajax({
+                  url: "https://api.pokemontcg.io/v1/cards",
+                }).done(function (data) {
+                  console.log(data);
+                  $('#api-component-page-six').html(apiTemplateSix(data.cards[0]));
+                });
+         */
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": "https://api.pokemontcg.io/v1/cards",
+          "method": "GET",
+          "headers": {
+            "Total-Count": 20,
+          }
+        }
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+          $('#api-component-page-six').html(apiTemplateSix(response));
+
         });
+
       }
 
       //Handle menu - first show page one no matter what
