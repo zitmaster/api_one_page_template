@@ -16,7 +16,7 @@ https://api.pokemontcg.io/v1/cards - Dette API indeholder 100 pokemon kort.
 
 Det bliver brugt jQuery, Javascript, HTML og Css i koden.
 
-Her er et link til en live version af min produkt: https://zitmaster.github.io/api_one_page_template/
+Her er et link til en live version af mit produkt: https://zitmaster.github.io/api_one_page_template/
 
 --------------------------------------- Det oven over et mit ----------------------------------------------
 
