@@ -314,9 +314,9 @@
             
             <img src="{{imageUrl}}">
            </div>
-           <div class="card-action">
+           <!--<div class="card-action">
             <a href="https://steamcommunity.com/dev">You can get your steam api here</a>
-          </div>
+          </div>-->
         </div>
     </div>
     {{/each}}
@@ -407,7 +407,11 @@
           "url": "https://api.pokemontcg.io/v1/cards",
           "method": "GET",
           "headers": {
-            "Total-Count": 200,
+            "Page-Size": 100,
+            "Count": 100,
+            "Total-Count": 9320,
+            "Ratelimit-Limit": 5000,
+            "Ratelimit-Remaining": 4999
           }
         }
 
