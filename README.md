@@ -1,7 +1,7 @@
 # api_one_page_template
 Victor Cebula 2.R - Programering årsprøve 2019
 
-Her er et link til en live version af mit produkt: https://zitmaster.github.io/api_one_page_template/
+Her er et link til en live version af min kode: https://zitmaster.github.io/api_one_page_template/
 
 Det jeg har vaglt at tage er API projektet.
 Lige forløbig bruger jeg:
