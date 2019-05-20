@@ -1,6 +1,8 @@
 # api_one_page_template
 Victor Cebula 2.R - Programering årsprøve 2019
 
+Her er et link til en live version af mit produkt: https://zitmaster.github.io/api_one_page_template/
+
 Det jeg har vaglt at tage er API projektet.
 Lige forløbig bruger jeg:
 
@@ -17,8 +19,6 @@ https://deckofcardsapi.com/api/deck/new/draw/?count=2 - Dette API viser dig et s
 https://api.pokemontcg.io/v1/cards - Dette API indeholder 100 pokemon kort.
 
 Det bliver brugt jQuery, Javascript, HTML og Css i koden.
-
-Her er et link til en live version af mit produkt: https://zitmaster.github.io/api_one_page_template/
 
 --------------------------------------- Det oven over et mit ----------------------------------------------
 
